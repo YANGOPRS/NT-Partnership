@@ -174,86 +174,149 @@
         }
         /* ===== YMMSS 60周年慶祝效果 ===== */
 
+/* ===================================
+   YMMSS 60周年鑽禧賀詞效果
+   金光閃閃 + 左右搖擺 + 彩紙飄落
+=================================== */
+
 .celebration {
     position: relative;
-    text-align: center;
-    font-size: 36px;
-    font-weight: 900;
-    color: #e65100;
     margin-top: 25px;
+    font-size: 42px;
+    font-weight: 900;
+    text-align: center;
     line-height: 1.5;
-    text-shadow:
-        0 0 8px rgba(255,193,7,0.8),
-        0 0 15px rgba(255,152,0,0.6);
-    animation: pulse 1.5s infinite;
+
+    background: linear-gradient(
+        90deg,
+        #ffb300,
+        #fff59d,
+        #ff6f00,
+        #fff59d,
+        #ffb300
+    );
+
+    background-size: 300% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    animation:
+        pulse 1.5s infinite,
+        swing 3s ease-in-out infinite,
+        shine 4s linear infinite;
 }
+
+/* 左右彩炮 */
 
 .celebration::before,
 .celebration::after {
     content: "🎊";
     position: absolute;
     top: 50%;
-    font-size: 42px;
-    animation: cannon 1s infinite alternate ease-in-out;
+    font-size: 50px;
+    animation: cannon 1s ease-in-out infinite alternate;
 }
 
 .celebration::before {
-    left: -50px;
+    left: -55px;
 }
 
 .celebration::after {
-    right: -50px;
+    right: -55px;
 }
+
+/* 彩紙 */
 
 .confetti {
     position: absolute;
+    top: -20px;
+    font-size: 28px;
     pointer-events: none;
-    font-size: 24px;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    z-index: 20;
 }
 
+/* 第一粒 */
+
 .confetti:nth-child(1) {
-    left: 10%;
-    animation-name: fall1;
+    left: 5%;
+    animation: fall1 3s linear infinite;
 }
+
+/* 第二粒 */
 
 .confetti:nth-child(2) {
     left: 25%;
-    animation-name: fall2;
-    animation-delay: .5s;
+    animation: fall2 4s linear infinite;
 }
+
+/* 第三粒 */
 
 .confetti:nth-child(3) {
     left: 45%;
-    animation-name: fall3;
-    animation-delay: 1s;
+    animation: fall3 3.5s linear infinite;
 }
+
+/* 第四粒 */
 
 .confetti:nth-child(4) {
     left: 65%;
-    animation-name: fall1;
-    animation-delay: 1.5s;
+    animation: fall1 4.5s linear infinite;
 }
+
+/* 第五粒 */
 
 .confetti:nth-child(5) {
     left: 85%;
-    animation-name: fall2;
-    animation-delay: .8s;
+    animation: fall2 3s linear infinite;
 }
+
+/* 放大縮小 */
 
 @keyframes pulse {
     0% {
         transform: scale(1);
     }
+
     50% {
-        transform: scale(1.15);
+        transform: scale(1.12);
     }
+
     100% {
         transform: scale(1);
     }
 }
+
+/* 左右擺動 */
+
+@keyframes swing {
+    0% {
+        rotate: -2deg;
+    }
+
+    50% {
+        rotate: 2deg;
+    }
+
+    100% {
+        rotate: -2deg;
+    }
+}
+
+/* 金光流動 */
+
+@keyframes shine {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 300% center;
+    }
+}
+
+/* 彩炮搖動 */
 
 @keyframes cannon {
     from {
@@ -261,50 +324,47 @@
     }
 
     to {
-        transform: translateY(-75%) rotate(15deg) scale(1.25);
+        transform: translateY(-70%) rotate(15deg) scale(1.25);
     }
 }
 
+/* 彩紙動畫 */
+
 @keyframes fall1 {
     0% {
-        top: -20px;
-        transform: rotate(0deg);
+        transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
 
     100% {
-        top: 120px;
-        transform: rotate(360deg);
+        transform: translateY(130px) rotate(360deg);
         opacity: 0;
     }
 }
 
 @keyframes fall2 {
     0% {
-        top: -20px;
-        transform: rotate(0deg);
+        transform: translateY(0) rotate(0deg);
         opacity: 1;
     }
 
     100% {
-        top: 140px;
-        transform: rotate(-360deg);
+        transform: translateY(140px) rotate(-360deg);
         opacity: 0;
     }
 }
 
 @keyframes fall3 {
     0% {
-        top: -20px;
-        transform: scale(1) rotate(0deg);
+        transform: translateY(0) scale(1);
         opacity: 1;
     }
 
     100% {
-        top: 130px;
-        transform: scale(1.3) rotate(540deg);
+        transform: translateY(125px) scale(1.4) rotate(540deg);
         opacity: 0;
     }
+}
 }
     </style>
 </head>
@@ -343,8 +403,13 @@
         <div class="intro-text" style="max-width: 380px; font-size: 15px;">
             恭喜！您成功透過「早苗計劃」跨專業團隊<b>「彼此搭配」</b>，讓早苗孩子茁壯長成為大樹！<br><br>
             「到校學前康復服務-早苗計劃」全賴跨專業團隊(心理學家、物理治療師、職業治療師、言語治療師、特幼兒工作員、社工)與家長及學校緊密攜手合作，進一步展現機構「彼此搭配」價值。<br><br>
-            <div class="celebration">
-            🎉🎊 <span>慶祝 YMMSS 60 周年快樂！</span> 🎊🎉
+             <div class="celebration">
+    <div class="confetti">🎉</div>
+    <div class="confetti">✨</div>
+    <div class="confetti">🎊</div>
+    <div class="confetti">⭐</div>
+    <div class="confetti">🎉</div>
+    慶祝 YMMSS 60 周年快樂！
             </div>
         </div>
         <button class="start-btn" ontouchstart="location.reload()" onclick="location.reload()">再玩一次</button>

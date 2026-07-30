@@ -175,7 +175,6 @@
         /* ===================================
    YMMSS 60周年 鑽禧慶祝效果
 =================================== */
-
 .celebration {
     position: relative;
     margin-top: 25px;
@@ -194,19 +193,15 @@
     );
 
     background-size: 300% auto;
-
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-
     animation:
         pulse 1.5s infinite,
         swing 3s ease-in-out infinite,
         shine 4s linear infinite;
 }
-
 /* 左右彩炮 */
-
 .celebration::before,
 .celebration::after {
     content: "🎊";
@@ -215,15 +210,12 @@
     font-size: 48px;
     animation: cannon 1s ease-in-out infinite alternate;
 }
-
 .celebration::before {
     left: -55px;
 }
-
 .celebration::after {
     right: -55px;
 }
-
 /* 彩紙 */
 
 .confetti{
@@ -236,120 +228,63 @@
 }
 
 /* 8粒彩紙 */
-
 .confetti1{
     left:5%;
     animation:fall 4s infinite;
 }
-
 .confetti2{
     left:15%;
     animation:fall 5s .8s infinite;
 }
-
 .confetti3{
     left:28%;
     animation:fall 4.5s 1.2s infinite;
 }
-
 .confetti4{
     left:42%;
     animation:fall 3.8s .5s infinite;
 }
-
 .confetti5{
     left:58%;
     animation:fall 5.2s 1.4s infinite;
 }
-
 .confetti6{
     left:70%;
     animation:fall 4.2s .7s infinite;
 }
-
 .confetti7{
     left:82%;
     animation:fall 4.8s 1s infinite;
 }
-
 .confetti8{
     left:92%;
     animation:fall 3.6s .3s infinite;
 }
-
 /* 放大縮小 */
-
 @keyframes pulse {
-
-    0%{
-        transform:scale(1);
-    }
-
-    50%{
-        transform:scale(1.12);
-    }
-
-    100%{
-        transform:scale(1);
-    }
+    0%{transform:scale(1);}
+    50%{transform:scale(1.12);}
+    100%{transform:scale(1);}
 }
-
 /* 左右搖擺 */
-
-@keyframes swing {
-
-    0%{
-        rotate:-2deg;
-    }
-
-    50%{
-        rotate:2deg;
-    }
-
-    100%{
-        rotate:-2deg;
-    }
+@keyframes swing {0%{rotate:-2deg;}
+    50%{rotate:2deg;}
+    100%{rotate:-2deg;}
 }
-
 /* 金光流動 */
-
 @keyframes shine {
-
-    0%{
-        background-position:0% center;
-    }
-
-    100%{
-        background-position:300% center;
-    }
+    0%{background-position:0% center;}
+    100%{background-position:300% center;}
 }
-
 /* 彩炮 */
-
 @keyframes cannon {
-
-    from{
-        transform:translateY(-50%) rotate(-15deg) scale(1);
-    }
-
-    to{
-        transform:translateY(-70%) rotate(15deg) scale(1.25);
-    }
+    from{transform:translateY(-50%) rotate(-15deg) scale(1);}
+    to{transform:translateY(-70%) rotate(15deg) scale(1.25);}
 }
-
 /* 真正由上跌落 */
-
 @keyframes fall {
-
-    0%{
-        transform:translateY(-180px) rotate(0deg);
-        opacity:1;
-    }
-
-    100%{
-        transform:translateY(350px) rotate(720deg);
-        opacity:0;
-    }
+    0%{transform:translateY(-180px) rotate(0deg);opacity:1;}
+    100%{transform:translateY(350px) rotate(720deg);opacity:0;}
 }
 }
 }

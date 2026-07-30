@@ -172,6 +172,140 @@
             -webkit-tap-highlight-color: rgba(0,0,0,0);
             touch-action: none; /* 禁用瀏覽器預設的雙擊縮放及下拉重整 */
         }
+        /* ===== YMMSS 60周年慶祝效果 ===== */
+
+.celebration {
+    position: relative;
+    text-align: center;
+    font-size: 36px;
+    font-weight: 900;
+    color: #e65100;
+    margin-top: 25px;
+    line-height: 1.5;
+    text-shadow:
+        0 0 8px rgba(255,193,7,0.8),
+        0 0 15px rgba(255,152,0,0.6);
+    animation: pulse 1.5s infinite;
+}
+
+.celebration::before,
+.celebration::after {
+    content: "🎊";
+    position: absolute;
+    top: 50%;
+    font-size: 42px;
+    animation: cannon 1s infinite alternate ease-in-out;
+}
+
+.celebration::before {
+    left: -50px;
+}
+
+.celebration::after {
+    right: -50px;
+}
+
+.confetti {
+    position: absolute;
+    pointer-events: none;
+    font-size: 24px;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.confetti:nth-child(1) {
+    left: 10%;
+    animation-name: fall1;
+}
+
+.confetti:nth-child(2) {
+    left: 25%;
+    animation-name: fall2;
+    animation-delay: .5s;
+}
+
+.confetti:nth-child(3) {
+    left: 45%;
+    animation-name: fall3;
+    animation-delay: 1s;
+}
+
+.confetti:nth-child(4) {
+    left: 65%;
+    animation-name: fall1;
+    animation-delay: 1.5s;
+}
+
+.confetti:nth-child(5) {
+    left: 85%;
+    animation-name: fall2;
+    animation-delay: .8s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes cannon {
+    from {
+        transform: translateY(-50%) rotate(-15deg) scale(1);
+    }
+
+    to {
+        transform: translateY(-75%) rotate(15deg) scale(1.25);
+    }
+}
+
+@keyframes fall1 {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        top: 120px;
+        transform: rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fall2 {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        top: 140px;
+        transform: rotate(-360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fall3 {
+    0% {
+        top: -20px;
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        top: 130px;
+        transform: scale(1.3) rotate(540deg);
+        opacity: 0;
+    }
+}
     </style>
 </head>
 <body>
@@ -207,9 +341,11 @@
         <h2>傳楊價值 大成功！「早苗」已茁壯成長！</h2>
         <div style="font-size: 70px; margin: 15px 0;">🌳</div>
         <div class="intro-text" style="max-width: 380px; font-size: 15px;">
-            恭喜！您成功透過早苗計劃跨專業團隊<b>「彼此搭配」</b>，讓早苗計劃的種子長成庇蔭社區的大樹！<br><br>
+            恭喜！您成功透過「早苗計劃」跨專業團隊<b>「彼此搭配」</b>，讓早苗孩子茁壯長成為大樹！<br><br>
             「到校學前康復服務-早苗計劃」全賴跨專業團隊(心理學家、物理治療師、職業治療師、言語治療師、特幼兒工作員、社工)與家長及學校緊密攜手合作，進一步展現機構「彼此搭配」價值。<br><br>
-            <b>慶祝 YMMSS 60 周年快樂！</b>
+            <div class="celebration">
+            🎉🎊 <span>慶祝 YMMSS 60 周年快樂！</span> 🎊🎉
+            </div>
         </div>
         <button class="start-btn" ontouchstart="location.reload()" onclick="location.reload()">再玩一次</button>
     </div>
@@ -239,10 +375,10 @@
         const itemTypes = [
             { icon: '🧑‍⚕️', label: '心理學家(CP/EP)', type: 'ep', score: 1 },
             { icon: '🧑‍🤝‍🧑', label: '社會工作員(SW)', type: 'sw', score: 1 },
-            { icon: '🩼', label: '物理治療(PT)', type: 'pt', score: 1 },
-            { icon: '🗣️', label: '言語治療(ST)', type: 'st', score: 1 },
-            { icon: '🖐️', label: '職業治療(OT)', type: 'ot', score: 1 },
-            { icon: '🏫', label: '綜合訓練(SCCW)', type: 'sccw', score: 1 },
+            { icon: '🩼', label: '物理治療師(PT)', type: 'pt', score: 1 },
+            { icon: '🗣️', label: '言語治療師(ST)', type: 'st', score: 1 },
+            { icon: '🖐️', label: '職業治療師(OT)', type: 'ot', score: 1 },
+            { icon: '🏫', label: '特殊幼兒工作員(SCCW)', type: 'sccw', score: 1 },
             { icon: '❌', label: '孤軍作戰', type: 'bad', score: -2 }          
         ];
 
